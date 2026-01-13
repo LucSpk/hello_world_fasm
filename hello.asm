@@ -7,7 +7,7 @@ main:
     mov rax, 1
     mov rdi, 1
     mov rsi, msg
-    mov rdx, 14
+    mov rdx, msg_len
     syscall
 
     mov rax, 60
@@ -16,3 +16,4 @@ main:
 
 segment readable writeable
 msg db "Hello, World!", 10
+msg_len = $ - msg
