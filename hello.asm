@@ -1,14 +1,19 @@
 format ELF64 executable
 
+macro write fd, buf, count {
+    mov rax, 1
+    mov rdi, fd
+    mov rsi, buf
+    mov rdx, count
+    syscall
+}
+
 segment readable executable
 entry main
 
 main: 
-    mov rax, 1
-    mov rdi, 1
-    mov rsi, msg
-    mov rdx, msg_len
-    syscall
+    
+    write 1, msg, msg_len
 
     mov rax, 60
     xor rdi, rdi
